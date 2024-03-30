@@ -2,19 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package extracreditpokemonpicachu;
+package Main;
+
+import Interfaz.Menu;
 
 /**
  *
  * @author Carl
  */
-public class ExtraCreditPokemonPicachu {
+public class Iniciador {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Menu g = new Menu();
+        g.setVisible(true);
     }
     
 }
