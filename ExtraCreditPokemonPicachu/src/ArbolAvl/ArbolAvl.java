@@ -126,7 +126,7 @@ public class ArbolAvl {
             raiz = new NodoAvl(dt);
             h.setLogical(true);
         }
-        else if (dt.menorQue(raiz.valorNodo()))
+        else if (dt.menorQue(raiz.valorNodo(raiz)))
         {
           NodoAvl iz;
            iz = insertarAvl((NodoAvl) raiz.subarbolIzdo(), dt, h);
