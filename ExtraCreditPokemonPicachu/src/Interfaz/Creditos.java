@@ -4,6 +4,11 @@
  */
 package Interfaz;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+
 /**
  *
  * @author Carl
@@ -37,6 +42,11 @@ public class Creditos extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
 
         Creditos.setText("Back to Menu");
+        Creditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreditosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,6 +96,20 @@ public class Creditos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
+        // Ir al menú
+        try {
+            // Ir al menu
+            Menu j = new Menu();
+            j.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(LobbyChar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(LobbyChar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_CreditosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,17 @@
 package Interfaz;
 
 import java.applet.AudioClip;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -15,13 +26,30 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() throws IOException, LineUnavailableException {
         initComponents();
-        AudioClip musicamenu;
-        musicamenu = java.applet.Applet.newAudioClip(getClass().getResource("/MenuMusica/1-03 Title ~Main Theme~.mp3"));
-        musicamenu.play();
-    }
+        try {
+            // Load your sound file (replace "your-sound-file.wav" with the actual file path)
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    Menu.class.getResourceAsStream("/MusicaMenu/1-03 Title ~Main Theme~.wav"));
+            // Get a Clip
+            Clip clip = AudioSystem.getClip();
 
+            // Open the audio stream
+            clip.open(audioInputStream);
+
+            // Start playing the clip
+            clip.start();
+            
+            if (this.Jugar.isSelected()) {
+            
+            clip.stop();
+        }
+    }   catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,8 +99,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         ComoJugar.setText("Como jugar");
+        ComoJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComoJugarActionPerformed(evt);
+            }
+        });
 
         Creditos.setText("Creditos");
+        Creditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreditosActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,10 +176,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_CargarJuegoActionPerformed
 
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
+        
         SelectorPoke a = new SelectorPoke();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JugarActionPerformed
+
+    private void ComoJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComoJugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComoJugarActionPerformed
+
+    private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
+        Creditos op = new Creditos();
+        op.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_CreditosActionPerformed
 
     /**
      * @param args the command line arguments

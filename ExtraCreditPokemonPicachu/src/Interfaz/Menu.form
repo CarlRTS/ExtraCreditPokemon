@@ -128,11 +128,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Como jugar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComoJugarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Creditos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Creditos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreditosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
