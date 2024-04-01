@@ -5,6 +5,10 @@
 package Main;
 
 import Interfaz.Menu;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
  *
@@ -15,9 +19,13 @@ public class Iniciador {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Menu g = new Menu();
-        g.setVisible(true);
+    public static void main(String[] args) throws IOException {
+        try {
+            Menu g = new Menu();
+            g.setVisible(true);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Iniciador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

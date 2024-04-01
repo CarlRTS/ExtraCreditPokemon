@@ -65,6 +65,13 @@ public class LobbyChar extends javax.swing.JFrame {
         etiquetaTiempo.setText(tiempo);
     }
     
+    private void actualizarPuntos(){
+        
+        String puntosrelacion = "0";
+        int puntos = 0;
+        Relacion.setText(puntosrelacion);
+    }
+    
     public void inicioCount(){
         t.start();
     }
@@ -88,8 +95,11 @@ public class LobbyChar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Creditos = new javax.swing.JButton();
         Charmeleon = new javax.swing.JLabel();
-        Relación = new javax.swing.JLabel();
+        Relacion = new javax.swing.JLabel();
         etiquetaTiempo = new javax.swing.JLabel();
+        TiempoJugado = new javax.swing.JLabel();
+        Relacionint = new javax.swing.JLabel();
+        Tienda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,37 +117,72 @@ public class LobbyChar extends javax.swing.JFrame {
         Charmeleon.setForeground(new java.awt.Color(255, 255, 255));
         Charmeleon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Movimientos Charmeleon/Normal-removebg-preview.png"))); // NOI18N
 
-        Relación.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        Relación.setForeground(new java.awt.Color(255, 255, 255));
-        Relación.setText("Relación:");
-        Relación.addMouseListener(new java.awt.event.MouseAdapter() {
+        Relacion.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        Relacion.setForeground(new java.awt.Color(255, 255, 255));
+        Relacion.setText("Relación:");
+        Relacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RelaciónMouseClicked(evt);
+                RelacionMouseClicked(evt);
             }
         });
 
         etiquetaTiempo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         etiquetaTiempo.setText("00:00:00:00");
 
+        TiempoJugado.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        TiempoJugado.setForeground(new java.awt.Color(255, 255, 255));
+        TiempoJugado.setText("Tiempo jugado");
+        TiempoJugado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TiempoJugadoMouseClicked(evt);
+            }
+        });
+
+        Relacionint.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        Relacionint.setForeground(new java.awt.Color(255, 255, 255));
+        Relacionint.setText("0");
+        Relacionint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelacionintMouseClicked(evt);
+            }
+        });
+
+        Tienda.setText("Tienda");
+        Tienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TiendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Creditos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Creditos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TiempoJugado)
+                        .addGap(18, 18, 18)))
                 .addComponent(etiquetaTiempo)
                 .addGap(182, 182, 182))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(Relación))
+                        .addComponent(Relacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Relacionint)
+                        .addGap(256, 256, 256)
+                        .addComponent(Tienda))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(405, 405, 405)
                         .addComponent(Charmeleon)))
-                .addContainerGap(450, Short.MAX_VALUE))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,12 +193,17 @@ public class LobbyChar extends javax.swing.JFrame {
                         .addComponent(Creditos))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TiempoJugado))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(Charmeleon)
-                .addGap(115, 115, 115)
-                .addComponent(Relación)
-                .addGap(50, 50, 50))
+                .addGap(112, 112, 112)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Relacion)
+                    .addComponent(Relacionint)
+                    .addComponent(Tienda))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,14 +235,33 @@ public class LobbyChar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CreditosActionPerformed
 
-    private void RelaciónMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelaciónMouseClicked
+    private void RelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelacionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_RelaciónMouseClicked
+    }//GEN-LAST:event_RelacionMouseClicked
+
+    private void TiempoJugadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TiempoJugadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TiempoJugadoMouseClicked
+
+    private void RelacionintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelacionintMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelacionintMouseClicked
+
+    private void TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TiendaActionPerformed
+        // Abre la tienda:
+            TiendaBayas tiendita = new TiendaBayas();
+            tiendita.setVisible(true);
+            
+            
+    }//GEN-LAST:event_TiendaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Charmeleon;
     private javax.swing.JButton Creditos;
-    private javax.swing.JLabel Relación;
+    private javax.swing.JLabel Relacion;
+    private javax.swing.JLabel Relacionint;
+    private javax.swing.JLabel TiempoJugado;
+    private javax.swing.JButton Tienda;
     private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
