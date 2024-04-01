@@ -171,10 +171,12 @@ public class SelectorPoke extends javax.swing.JFrame {
     }//GEN-LAST:event_ElegirFarfetchActionPerformed
 
     private void ElegirCharmeleonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirCharmeleonActionPerformed
-        //Abre el lobby de Charmeleon
+        
+        
         LobbyChar nuevolobbychar = new LobbyChar();
         nuevolobbychar.setVisible(true);
         this.dispose();
+        nuevolobbychar.inicioCount();
     }//GEN-LAST:event_ElegirCharmeleonActionPerformed
 
     private void IrAlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrAlMenuActionPerformed

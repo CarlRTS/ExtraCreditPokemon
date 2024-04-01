@@ -4,17 +4,23 @@
  */
 package Interfaz;
 
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.Timer;
 
 /**
  *
  * @author Carl
  */
 public class LobbyChar extends javax.swing.JFrame {
-
+    
+    
+    
     /**
      * Creates new form Creditos
      */
@@ -24,7 +30,51 @@ public class LobbyChar extends javax.swing.JFrame {
         int tiempo = 0;
         int relacion = 0;
         
+        t = new Timer(10,acciones);
+        
     }
+    //Cronometro
+    private Timer t;
+    private int h,m,s,cs;
+    
+    private ActionListener acciones = new ActionListener(){
+        
+        
+    @Override 
+        public void actionPerformed(ActionEvent ae){
+            cs++;
+            if(cs==100){
+                cs = 0;
+                ++s;
+                
+            }
+            if(s==60){
+                s=0;
+                ++m;
+            }
+            if(m==60){
+                m =0;
+                ++h;
+            }
+            actualizarLabel();
+        }
+    };
+    
+    private void actualizarLabel(){
+        String tiempo = (h<=9?"0":"")+h+":"+(m<=9?"0":"")+m+":"+(s<=9?"0":"")+s+":"+(cs<=9?"0":"")+cs;
+        etiquetaTiempo.setText(tiempo);
+    }
+    
+    public void inicioCount(){
+        t.start();
+    }
+    
+    
+    
+    
+    
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +89,7 @@ public class LobbyChar extends javax.swing.JFrame {
         Creditos = new javax.swing.JButton();
         Charmeleon = new javax.swing.JLabel();
         Relación = new javax.swing.JLabel();
+        etiquetaTiempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,29 +116,40 @@ public class LobbyChar extends javax.swing.JFrame {
             }
         });
 
+        etiquetaTiempo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        etiquetaTiempo.setText("00:00:00:00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Creditos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiquetaTiempo)
+                .addGap(182, 182, 182))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Creditos))
+                        .addGap(72, 72, 72)
+                        .addComponent(Relación))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(405, 405, 405)
-                        .addComponent(Charmeleon))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(Relación)))
+                        .addComponent(Charmeleon)))
                 .addContainerGap(450, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(Creditos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(Creditos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(Charmeleon)
                 .addGap(115, 115, 115)
                 .addComponent(Relación)
@@ -109,6 +171,8 @@ public class LobbyChar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
+        
+        t.stop();
         try {
             // Ir al menu
             Menu j = new Menu();
@@ -129,6 +193,7 @@ public class LobbyChar extends javax.swing.JFrame {
     private javax.swing.JLabel Charmeleon;
     private javax.swing.JButton Creditos;
     private javax.swing.JLabel Relación;
+    private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
