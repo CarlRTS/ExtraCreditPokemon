@@ -153,12 +153,12 @@ public class ArbolAvl {
                     }
                     else
                     {
-                        raiz = rotacionID(raiz, n1)
+                        raiz = rotacionID(raiz, n1);
                     }
                     h.setLogical(false);
             }
         }
-        else if (dt.mayorQue(raiz.valorNodo())) 
+        else if (dt.mayorQue(raiz.valorNodo(raiz))) 
         {
             NodoAvl dr;
             dr = insertarAvl((NodoAvl)raiz.subarbolDcho(), dt, h);
@@ -192,7 +192,7 @@ public class ArbolAvl {
                 {
                 throw new Exception("No puede haber claves repetidas " );
                 }
-            return return raiz;
+            return raiz;
             
             
     }

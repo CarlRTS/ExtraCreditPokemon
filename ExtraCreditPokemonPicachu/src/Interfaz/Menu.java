@@ -4,6 +4,8 @@
  */
 package Interfaz;
 
+import java.applet.AudioClip;
+
 /**
  *
  * @author Carl
@@ -15,6 +17,9 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        AudioClip musicamenu;
+        musicamenu = java.applet.Applet.newAudioClip(getClass().getResource("/MenuMusica/1-03 Title ~Main Theme~.mp3"));
+        musicamenu.play();
     }
 
     /**
@@ -98,8 +103,8 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Jugar)
                 .addGap(18, 18, 18)
                 .addComponent(CargarJuego)
