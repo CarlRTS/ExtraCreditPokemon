@@ -384,7 +384,7 @@ public class LobbyChar extends javax.swing.JFrame {
         // abrir casino
         Casino a = new Casino();
         a.setVisible(true);
-        this.dispose();
+        
        
     }//GEN-LAST:event_AbrirCasinoActionPerformed
 
