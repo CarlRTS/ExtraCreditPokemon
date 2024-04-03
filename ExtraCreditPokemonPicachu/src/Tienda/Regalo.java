@@ -32,8 +32,9 @@ public class Regalo {
         relacion++;
     }
     
-    /*public void agregar a la lista(){
-        lista.add(pokemon);
+    //public void agregar a la lista(){
+      //  lista.add(pokemon);
     }
-    /*
-}
+    
+
+

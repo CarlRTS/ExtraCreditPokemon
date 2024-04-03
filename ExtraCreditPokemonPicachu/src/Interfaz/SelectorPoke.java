@@ -7,19 +7,26 @@ package Interfaz;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
  * @author Carl
  */
 public class SelectorPoke extends javax.swing.JFrame {
-
+    
+    Clip selectorpoke;
     /**
      * Creates new form Menu
      */
-    public SelectorPoke() {
+    public SelectorPoke() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
+        
+        
     }
 
     /**

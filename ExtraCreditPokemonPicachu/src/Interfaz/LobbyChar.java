@@ -12,6 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
+import Jugador.Partida;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,9 +30,8 @@ public class LobbyChar extends javax.swing.JFrame {
      */
     public LobbyChar() {
         initComponents();
-        int watts = 0;
-        int tiempo = 0;
-        int relacion = 0;
+        
+        
         
         t = new Timer(10,acciones);
         
@@ -101,10 +104,12 @@ public class LobbyChar extends javax.swing.JFrame {
         Relacionint = new javax.swing.JLabel();
         Tienda = new javax.swing.JButton();
         FotoRelacion = new javax.swing.JLabel();
+        GuardarTXT = new javax.swing.JButton();
+        TiempoJugado1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(51, 255, 0));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
 
         Creditos.setText("Back to Menu");
@@ -155,71 +160,99 @@ public class LobbyChar extends javax.swing.JFrame {
             }
         });
 
-        FotoRelacion.setText("jLabel1");
+        FotoRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Emociones Charmeleon/Sigh1.PNG"))); // NOI18N
+        FotoRelacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                FotoRelacionPropertyChange(evt);
+            }
+        });
+
+        GuardarTXT.setText("Guardar Partida");
+        GuardarTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarTXTActionPerformed(evt);
+            }
+        });
+
+        TiempoJugado1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        TiempoJugado1.setForeground(new java.awt.Color(255, 255, 255));
+        TiempoJugado1.setText("Guardar partida");
+        TiempoJugado1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TiempoJugado1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TiempoJugado)
-                        .addGap(18, 18, 18))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Creditos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(etiquetaTiempo)
-                .addGap(182, 182, 182))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(FotoRelacion)
-                        .addGap(296, 296, 296)
-                        .addComponent(Charmeleon))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addComponent(Relacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Relacionint)
-                        .addGap(256, 256, 256)
-                        .addComponent(Tienda)))
-                .addContainerGap(450, Short.MAX_VALUE))
+                        .addGap(268, 268, 268)
+                        .addComponent(Tienda))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(Creditos))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(FotoRelacion)))
+                        .addGap(197, 197, 197)
+                        .addComponent(Charmeleon)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(TiempoJugado)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(etiquetaTiempo)
+                            .addComponent(GuardarTXT))
+                        .addGap(42, 42, 42))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TiempoJugado1)
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Creditos)
+                    .addComponent(TiempoJugado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(Creditos))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TiempoJugado))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Charmeleon)
-                        .addGap(112, 112, 112))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(FotoRelacion)
-                        .addGap(163, 163, 163)))
+                    .addComponent(Charmeleon)
+                    .addComponent(FotoRelacion))
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Relacion)
                     .addComponent(Relacionint)
-                    .addComponent(Tienda))
-                .addGap(46, 46, 46))
+                    .addComponent(Tienda)
+                    .addComponent(GuardarTXT))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TiempoJugado1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,8 +263,9 @@ public class LobbyChar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
-        
-        t.stop();
+        int opcion = JOptionPane.showConfirmDialog(null, "Si vuelves al menú todos los cambios que no guardaste se perderan...", "",0,1);
+        if (opcion == 0) {
+           t.stop();
         try {
             // Ir al menu
             Menu j = new Menu();
@@ -241,7 +275,10 @@ public class LobbyChar extends javax.swing.JFrame {
             Logger.getLogger(LobbyChar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(LobbyChar.class.getName()).log(Level.SEVERE, null, ex);
+        } 
         }
+        
+        
     }//GEN-LAST:event_CreditosActionPerformed
 
     private void RelacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelacionMouseClicked
@@ -264,15 +301,35 @@ public class LobbyChar extends javax.swing.JFrame {
             
     }//GEN-LAST:event_TiendaActionPerformed
 
+    private void FotoRelacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FotoRelacionPropertyChange
+        //Cambiar fotorelacion dependiendo de los puntos de relacion
+        //Partida nuevapartida = new Partida();
+        
+            
+        
+    }//GEN-LAST:event_FotoRelacionPropertyChange
+
+    private void GuardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTXTActionPerformed
+        // Guardar partida
+        
+    }//GEN-LAST:event_GuardarTXTActionPerformed
+
+    private void TiempoJugado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TiempoJugado1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TiempoJugado1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Charmeleon;
     private javax.swing.JButton Creditos;
-    private javax.swing.JLabel FotoRelacion;
+    public javax.swing.JLabel FotoRelacion;
+    private javax.swing.JButton GuardarTXT;
     private javax.swing.JLabel Relacion;
     private javax.swing.JLabel Relacionint;
     private javax.swing.JLabel TiempoJugado;
+    private javax.swing.JLabel TiempoJugado1;
     private javax.swing.JButton Tienda;
     private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
+

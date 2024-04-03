@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import Interfaz.SelectorPoke;
 import java.applet.AudioClip;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,6 +23,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author Carl
  */
 public class Menu extends javax.swing.JFrame {
+    
+    Clip clip;
+    
 
     /**
      * Creates new form Menu
@@ -31,9 +35,9 @@ public class Menu extends javax.swing.JFrame {
         try {
             // Load your sound file (replace "your-sound-file.wav" with the actual file path)
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
-                    Menu.class.getResourceAsStream("/MusicaMenu/1-03 Title ~Main Theme~.wav"));
+                    Menu.class.getResourceAsStream("/MusicaMenu/MusicaMenu (2).wav"));
             // Get a Clip
-            Clip clip = AudioSystem.getClip();
+            this.clip = AudioSystem.getClip();
 
             // Open the audio stream
             clip.open(audioInputStream);
@@ -41,13 +45,13 @@ public class Menu extends javax.swing.JFrame {
             // Start playing the clip
             clip.start();
             
-            if (this.Jugar.isSelected()) {
             
-            clip.stop();
-        }
+                 
+            
     }   catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
     /**
@@ -177,19 +181,49 @@ public class Menu extends javax.swing.JFrame {
 
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed
         
-        SelectorPoke a = new SelectorPoke();
-        a.setVisible(true);
-        this.dispose();
+        
+        
+        
+        try {
+            SelectorPoke a = new SelectorPoke();
+
+            a.setVisible(true);
+            this.dispose();
+            
+            if (clip.isRunning()) {
+                
+                clip.close();
+            }
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            
+        
     }//GEN-LAST:event_JugarActionPerformed
 
     private void ComoJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComoJugarActionPerformed
-        // TODO add your handling code here:
+        ComoJugar com = new ComoJugar();
+        com.setVisible(true);
+        this.dispose();
+        if (clip.isRunning()) {
+                
+                clip.close();
+            }
     }//GEN-LAST:event_ComoJugarActionPerformed
 
     private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
         Creditos op = new Creditos();
         op.setVisible(true);
         this.dispose();
+        if (clip.isRunning()) {
+                
+                clip.close();
+            }
     }//GEN-LAST:event_CreditosActionPerformed
 
     /**
