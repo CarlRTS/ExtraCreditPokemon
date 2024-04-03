@@ -13,9 +13,14 @@ import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 import Jugador.Partida;
+import MusicaMenu.Musica;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -23,13 +28,42 @@ import javax.swing.JOptionPane;
  */
 public class LobbyChar extends javax.swing.JFrame {
     
-    
+    Clip musica;
     
     /**
      * Creates new form Creditos
      */
-    public LobbyChar() {
+    public LobbyChar() throws IOException, LineUnavailableException {
         initComponents();
+        
+        
+    
+        
+        try {
+            // Load your sound file (replace "your-sound-file.wav" with the actual file path)
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    Menu.class.getResourceAsStream("/MusicaMenu/MusicaSelector.wav"));
+            // Get a Clip
+            musica = AudioSystem.getClip();
+
+            // Open the audio stream
+            musica.open(audioInputStream);
+
+            // Start playing the clip
+            musica.start();
+            musica.loop(100);
+            
+            
+                 
+            
+    }   catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+                 
+            
+    
         
         
         
@@ -83,6 +117,7 @@ public class LobbyChar extends javax.swing.JFrame {
     
     
     
+    
         
     
 
@@ -109,7 +144,7 @@ public class LobbyChar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 255, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
 
         Creditos.setText("Back to Menu");
@@ -266,6 +301,9 @@ public class LobbyChar extends javax.swing.JFrame {
         int opcion = JOptionPane.showConfirmDialog(null, "Si vuelves al menú todos los cambios que no guardaste se perderan...", "",0,1);
         if (opcion == 0) {
            t.stop();
+           musica.close();
+           musica.stop();
+           
         try {
             // Ir al menu
             Menu j = new Menu();
@@ -311,6 +349,12 @@ public class LobbyChar extends javax.swing.JFrame {
 
     private void GuardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTXTActionPerformed
         // Guardar partida
+        Partida nueva = new Partida();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres guardar la partida?", "",0,1);
+        if (opcion == 0) {
+        nueva.guardarjuego();
+        JOptionPane.showMessageDialog(null, "Se ha guardado la partida exitosamente");
+        }
         
     }//GEN-LAST:event_GuardarTXTActionPerformed
 

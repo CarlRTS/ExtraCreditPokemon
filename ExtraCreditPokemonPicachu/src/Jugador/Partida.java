@@ -73,7 +73,7 @@ public class Partida {
     }
     
     public void guardarjuego(){
-        String rutaArchivo = "C:\\Users\\Carl\\Desktop\\PROYECTO\\ExtraCreditPokemon\\ExtraCreditPokemonPicachu\\src\\Jugador\\PartidasGuardadas\\jugador.txt";
+        String rutaArchivo = "ExtraCreditPokemonPicachu/src/Jugador//PartidasGuardadas/PartidaNueva.txt";
 
         try {
             FileWriter writer = new FileWriter(rutaArchivo);

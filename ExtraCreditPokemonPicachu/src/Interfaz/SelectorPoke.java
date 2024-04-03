@@ -25,6 +25,26 @@ public class SelectorPoke extends javax.swing.JFrame {
      */
     public SelectorPoke() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
+        try {
+            // Load your sound file (replace "your-sound-file.wav" with the actual file path)
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    Menu.class.getResourceAsStream("/MusicaMenu/Selector.wav"));
+            // Get a Clip
+            this.selectorpoke = AudioSystem.getClip();
+
+            // Open the audio stream
+            selectorpoke.open(audioInputStream);
+
+            // Start playing the clip
+            selectorpoke.start();
+            selectorpoke.loop(100);
+            
+            
+                 
+            
+    }   catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }
@@ -179,15 +199,22 @@ public class SelectorPoke extends javax.swing.JFrame {
 
     private void ElegirCharmeleonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirCharmeleonActionPerformed
         
-        
-        LobbyChar nuevolobbychar = new LobbyChar();
-        nuevolobbychar.setVisible(true);
-        this.dispose();
-        nuevolobbychar.inicioCount();
+        selectorpoke.stop();
+        try {
+            LobbyChar nuevolobbychar = new LobbyChar();
+            nuevolobbychar.setVisible(true);
+            this.dispose();
+            nuevolobbychar.inicioCount();
+        } catch (IOException ex) {
+            Logger.getLogger(SelectorPoke.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(SelectorPoke.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ElegirCharmeleonActionPerformed
 
     private void IrAlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrAlMenuActionPerformed
         //Ir al menú
+        selectorpoke.stop();
         try {
             // Ir al menu
             Menu j = new Menu();

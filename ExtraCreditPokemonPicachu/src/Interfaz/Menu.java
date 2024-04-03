@@ -44,6 +44,7 @@ public class Menu extends javax.swing.JFrame {
 
             // Start playing the clip
             clip.start();
+            clip.loop(100);
             
             
                  
