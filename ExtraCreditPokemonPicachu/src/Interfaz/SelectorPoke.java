@@ -194,7 +194,18 @@ public class SelectorPoke extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ElegirFarfetchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirFarfetchActionPerformed
-        // TODO add your handling code here:
+        // Elegir Farfetch
+         selectorpoke.stop();
+        try {
+            LobbyFarfetch nuevolobbyfar = new LobbyFarfetch();
+            nuevolobbyfar.setVisible(true);
+            this.dispose();
+            nuevolobbyfar.inicioCount();
+        } catch (IOException ex) {
+            Logger.getLogger(SelectorPoke.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(SelectorPoke.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ElegirFarfetchActionPerformed
 
     private void ElegirCharmeleonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirCharmeleonActionPerformed
