@@ -29,11 +29,13 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class LobbyFarfetch extends javax.swing.JFrame {
     
     Clip musica;
+    Partida nueva;
     
     /**
      * Creates new form Creditos
      */
     public LobbyFarfetch() throws IOException, LineUnavailableException {
+        this.watts = s;
         initComponents();
         
         
@@ -70,6 +72,11 @@ public class LobbyFarfetch extends javax.swing.JFrame {
         t = new Timer(10,acciones);
         
     }
+    //Watts
+    
+    public int unidades, decenas, centenas, milecimas;
+    public int watts;
+    public int relacion;
     //Cronometro
     private Timer t;
     private int h,m,s,cs;
@@ -346,7 +353,9 @@ public class LobbyFarfetch extends javax.swing.JFrame {
 
     private void GuardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTXTActionPerformed
         // Guardar partida
-        Partida nueva = new Partida();
+        int relacion = Relacionint.getText().length();
+        
+        nueva.setRelacion(relacion);
         int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres guardar la partida?", "",0,1);
         if (opcion == 0) {
         nueva.guardarjuego();

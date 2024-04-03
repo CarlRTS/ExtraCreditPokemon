@@ -74,6 +74,10 @@ public class LobbyChar extends javax.swing.JFrame {
     private Timer t;
     private int h,m,s,cs;
     
+    // Watts
+    public int unidades, decenas, centenas, milecimas;
+    public int watts;
+    
     private ActionListener acciones = new ActionListener(){
         
         

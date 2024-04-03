@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +71,11 @@ public class TiendaBayas extends javax.swing.JFrame {
         jLabel2.setText("Bienvenido  la tienda");
 
         ComprarBayaAranja.setText("Comprar ");
+        ComprarBayaAranja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarBayaAranjaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Baya_Aranja_EP.png"))); // NOI18N
 
@@ -130,24 +136,23 @@ public class TiendaBayas extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(ComprarBayaAranja))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addComponent(ComprarPokeBall))
-                        .addGap(93, 93, 93)
-                        .addComponent(ComprarZiuela)
-                        .addGap(82, 82, 82)
-                        .addComponent(ComprarEnigma)
-                        .addGap(108, 108, 108)
-                        .addComponent(ComprarEnigma1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(ComprarBayaAranja))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(ComprarPokeBall))
+                                .addGap(93, 93, 93)
+                                .addComponent(ComprarZiuela)
+                                .addGap(82, 82, 82)
+                                .addComponent(ComprarEnigma)
+                                .addGap(108, 108, 108)
+                                .addComponent(ComprarEnigma1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,15 +218,16 @@ public class TiendaBayas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)))
                 .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -282,6 +288,36 @@ public class TiendaBayas extends javax.swing.JFrame {
         // Cierra tienda:
         this.dispose();
     }//GEN-LAST:event_ComprarPokeBall1ActionPerformed
+
+    private void ComprarBayaAranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarBayaAranjaActionPerformed
+        try {
+            // BayaAranja
+            LobbyFarfetch l = new LobbyFarfetch();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "La Baya Aranja tiene un precio de 100 watts", "",0,0);
+            if (opcion == 1) {
+                if ((l.watts <100)||(j.watts<100)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "",0,1);
+                    if (compra == 1) {
+                        if (l.watts <100) {
+                            l.watts  = l.watts - 100;
+                            l.relacion = l.relacion + 100;
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarBayaAranjaActionPerformed
 
     /**
      * @param args the command line arguments
