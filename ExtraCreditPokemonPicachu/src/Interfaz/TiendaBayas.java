@@ -314,10 +314,8 @@ public class TiendaBayas extends javax.swing.JFrame {
             l.musica.stop();
             LobbyChar j = new LobbyChar();
             j.musica.stop();
-            int opcion = JOptionPane.showConfirmDialog(null, "Aceptar o Cancelar",
-                "OK_CANCEL_OPTION", JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE);
-            if (opcion == JOptionPane.OK_CANCEL_OPTION) {
+            int opcion = JOptionPane.showConfirmDialog(null, "La baya cuesta 100 watts", "",0,1);
+            if (opcion == 1) {
                 if ((l.watts <100)||(j.watts<100)) {
                     JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
                 }else{
