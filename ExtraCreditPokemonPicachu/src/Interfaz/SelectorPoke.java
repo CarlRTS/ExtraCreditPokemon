@@ -197,7 +197,7 @@ public class SelectorPoke extends javax.swing.JFrame {
         // Elegir Farfetch
          selectorpoke.stop();
         try {
-            LobbyFarfetch nuevolobbyfar = new LobbyFarfetch();
+            LobbyFarfetch1 nuevolobbyfar = new LobbyFarfetch1();
             nuevolobbyfar.setVisible(true);
             this.dispose();
             nuevolobbyfar.inicioCount();

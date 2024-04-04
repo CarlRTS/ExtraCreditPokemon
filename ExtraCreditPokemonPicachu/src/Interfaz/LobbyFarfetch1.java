@@ -14,6 +14,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 import Jugador.Partida;
 import MusicaMenu.Musica;
+import java.io.FileWriter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -26,16 +27,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  * @author Carl
  */
-public class LobbyFarfetch extends javax.swing.JFrame {
+public class LobbyFarfetch1 extends javax.swing.JFrame {
     
     Clip musica;
-    Partida nueva;
     
     /**
      * Creates new form Creditos
      */
-    public LobbyFarfetch() throws IOException, LineUnavailableException {
-        this.watts = s;
+    public LobbyFarfetch1() throws IOException, LineUnavailableException {
         initComponents();
         
         
@@ -68,18 +67,22 @@ public class LobbyFarfetch extends javax.swing.JFrame {
     
         
         
-        
+        this.actualizarwatts();
         t = new Timer(10,acciones);
         
     }
-    //Watts
-    
-    public int unidades, decenas, centenas, milecimas;
-    public int watts;
-    public int relacion;
     //Cronometro
+    private Timer w;
     private Timer t;
     private int h,m,s,cs;
+    public int watts = s;
+    public int cant_poke = 1;
+    public int regalos = 0;
+    
+    // Watts
+    public int unidades, decenas, centenas, milecimas;
+    
+    
     
     private ActionListener acciones = new ActionListener(){
         
@@ -90,6 +93,7 @@ public class LobbyFarfetch extends javax.swing.JFrame {
             if(cs==100){
                 cs = 0;
                 ++s;
+                ++watts;
                 
             }
             if(s==60){
@@ -101,7 +105,9 @@ public class LobbyFarfetch extends javax.swing.JFrame {
                 ++h;
             }
             actualizarLabel();
+            actualizarwatts();
         }
+         
     };
     
     private void actualizarLabel(){
@@ -109,17 +115,34 @@ public class LobbyFarfetch extends javax.swing.JFrame {
         etiquetaTiempo.setText(tiempo);
     }
     
-    private void actualizarPuntos(){
+    private void actualizarwatts(){
         
-        String puntosrelacion = "0";
-        int puntos = 0;
-        Relacion.setText(puntosrelacion);
+        String a = "Cantidad de watts "+ watts;
+        Relacionint.setText(a);
     }
+    
     
     public void inicioCount(){
         t.start();
     }
     
+    public void guardarjuego(){
+        String rutaArchivo = "C:\\Users\\Carl\\Desktop\\PROYECTO\\ExtraCreditPokemon\\ExtraCreditPokemonPicachu\\src\\Jugador\\PartidasGuardadas\\Partidaguardada.txt";
+
+        try {
+            FileWriter writer = new FileWriter(rutaArchivo);
+            writer.write("Tiempo jugado: " + etiquetaTiempo.getText() + "\n");
+            writer.write("Watts: " + watts + "\n");
+            writer.write("Regalos: " + regalos + "\n");
+            writer.write("Relación: " + Relacionint.getText() + "\n");
+            writer.write("Cantidad de Pokémon: " + cant_poke + "\n");
+            writer.close();
+            System.out.println("Archivo generado exitosamente en " + rutaArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo.");
+            e.printStackTrace();
+        }
+    }
     
     
     
@@ -148,10 +171,11 @@ public class LobbyFarfetch extends javax.swing.JFrame {
         FotoRelacion = new javax.swing.JLabel();
         GuardarTXT = new javax.swing.JButton();
         TiempoJugado1 = new javax.swing.JLabel();
+        AbrirCasino = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
 
         Creditos.setText("Back to Menu");
@@ -163,11 +187,11 @@ public class LobbyFarfetch extends javax.swing.JFrame {
 
         Charmeleon.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         Charmeleon.setForeground(new java.awt.Color(255, 255, 255));
-        Charmeleon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Movimientos Charmeleon/Normal-removebg-preview.png"))); // NOI18N
+        Charmeleon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Emociones 0083 Farfetch_d/Captura-removebg-preview (1).png"))); // NOI18N
 
         Relacion.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         Relacion.setForeground(new java.awt.Color(255, 255, 255));
-        Relacion.setText("Relación:");
+        Relacion.setText("Watts");
         Relacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RelacionMouseClicked(evt);
@@ -202,7 +226,7 @@ public class LobbyFarfetch extends javax.swing.JFrame {
             }
         });
 
-        FotoRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Emociones Charmeleon/Sigh1.PNG"))); // NOI18N
+        FotoRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Emociones 0083 Farfetch_d/Sigh^.png"))); // NOI18N
         FotoRelacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 FotoRelacionPropertyChange(evt);
@@ -225,43 +249,54 @@ public class LobbyFarfetch extends javax.swing.JFrame {
             }
         });
 
+        AbrirCasino.setText("Jugar Cartas");
+        AbrirCasino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbrirCasinoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(Relacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Relacionint)
-                        .addGap(268, 268, 268)
-                        .addComponent(Tienda))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(TiempoJugado1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(Creditos))
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Creditos)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Relacion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Relacionint))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(FotoRelacion)))
-                        .addGap(197, 197, 197)
-                        .addComponent(Charmeleon)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(TiempoJugado)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etiquetaTiempo)
-                            .addComponent(GuardarTXT))
-                        .addGap(42, 42, 42))))
+                                .addGap(44, 44, 44)
+                                .addComponent(FotoRelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(TiempoJugado)
+                                .addGap(30, 30, 30))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(etiquetaTiempo)
+                                    .addComponent(GuardarTXT)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Charmeleon)
+                                        .addGap(135, 135, 135)
+                                        .addComponent(AbrirCasino)))
+                                .addGap(42, 42, 42)))))
+                .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TiempoJugado1)
-                .addGap(30, 30, 30))
+                .addComponent(Tienda)
+                .addGap(320, 320, 320))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,26 +307,36 @@ public class LobbyFarfetch extends javax.swing.JFrame {
                     .addComponent(TiempoJugado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Charmeleon)
-                    .addComponent(FotoRelacion))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Relacion)
-                    .addComponent(Relacionint)
-                    .addComponent(Tienda)
-                    .addComponent(GuardarTXT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TiempoJugado1)
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(AbrirCasino)
+                                .addComponent(Charmeleon))
+                            .addComponent(FotoRelacion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Tienda)
+                            .addComponent(Relacion)
+                            .addComponent(Relacionint))
+                        .addGap(60, 60, 60))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(GuardarTXT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TiempoJugado1)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,9 +359,9 @@ public class LobbyFarfetch extends javax.swing.JFrame {
             j.setVisible(true);
             this.dispose();
         } catch (IOException ex) {
-            Logger.getLogger(LobbyFarfetch.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LobbyFarfetch1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
-            Logger.getLogger(LobbyFarfetch.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LobbyFarfetch1.class.getName()).log(Level.SEVERE, null, ex);
         } 
         }
         
@@ -353,12 +398,10 @@ public class LobbyFarfetch extends javax.swing.JFrame {
 
     private void GuardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTXTActionPerformed
         // Guardar partida
-        int relacion = Relacionint.getText().length();
         
-        nueva.setRelacion(relacion);
         int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres guardar la partida?", "",0,1);
         if (opcion == 0) {
-        nueva.guardarjuego();
+        this.guardarjuego();
         JOptionPane.showMessageDialog(null, "Se ha guardado la partida exitosamente");
         }
         
@@ -368,7 +411,16 @@ public class LobbyFarfetch extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TiempoJugado1MouseClicked
 
+    private void AbrirCasinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirCasinoActionPerformed
+        // abrir casino
+        Casino1 g = new Casino1();
+        g.setVisible(true);
+        
+       
+    }//GEN-LAST:event_AbrirCasinoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AbrirCasino;
     private javax.swing.JLabel Charmeleon;
     private javax.swing.JButton Creditos;
     public javax.swing.JLabel FotoRelacion;

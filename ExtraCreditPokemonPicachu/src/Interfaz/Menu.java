@@ -177,7 +177,21 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CargarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarJuegoActionPerformed
-        // TODO add your handling code here:
+        try {
+            CargarJuego juego = new CargarJuego();
+            juego.setVisible(true);
+            this.dispose();
+            
+            if (clip.isRunning()) {
+                
+                clip.close();
+            }
+            
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_CargarJuegoActionPerformed
 
     private void JugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarActionPerformed

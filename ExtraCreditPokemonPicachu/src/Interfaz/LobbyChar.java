@@ -14,6 +14,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.Timer;
 import Jugador.Partida;
 import MusicaMenu.Musica;
+import java.io.FileWriter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -66,17 +67,21 @@ public class LobbyChar extends javax.swing.JFrame {
     
         
         
-        
+        this.actualizarwatts();
         t = new Timer(10,acciones);
         
     }
     //Cronometro
+    private Timer w;
     private Timer t;
     private int h,m,s,cs;
-    
+    public int watts = s;
+    public int regalos = 0;
+    public int cant_poke = 1;
     // Watts
     public int unidades, decenas, centenas, milecimas;
-    public int watts;
+    
+    
     
     private ActionListener acciones = new ActionListener(){
         
@@ -87,6 +92,7 @@ public class LobbyChar extends javax.swing.JFrame {
             if(cs==100){
                 cs = 0;
                 ++s;
+                ++watts;
                 
             }
             if(s==60){
@@ -98,7 +104,9 @@ public class LobbyChar extends javax.swing.JFrame {
                 ++h;
             }
             actualizarLabel();
+            actualizarwatts();
         }
+         
     };
     
     private void actualizarLabel(){
@@ -106,12 +114,12 @@ public class LobbyChar extends javax.swing.JFrame {
         etiquetaTiempo.setText(tiempo);
     }
     
-    private void actualizarPuntos(){
+    private void actualizarwatts(){
         
-        String puntosrelacion = "0";
-        int puntos = 0;
-        Relacion.setText(puntosrelacion);
+        String a = "Cantidad de watts "+ watts;
+        Relacionint.setText(a);
     }
+    
     
     public void inicioCount(){
         t.start();
@@ -119,7 +127,23 @@ public class LobbyChar extends javax.swing.JFrame {
     
     
     
-    
+    public void guardarjuego(){
+        String rutaArchivo = "C:\\Users\\Carl\\Desktop\\PROYECTO\\ExtraCreditPokemon\\ExtraCreditPokemonPicachu\\src\\Jugador\\PartidasGuardadas\\Partidaguardada.txt";
+
+        try {
+            FileWriter writer = new FileWriter(rutaArchivo);
+            writer.write("Tiempo jugado: " + etiquetaTiempo.getText() + "\n");
+            writer.write("Watts: " + watts + "\n");
+            writer.write("Regalos: " + regalos + "\n");
+            writer.write("Relación: " + Relacionint.getText() + "\n");
+            writer.write("Cantidad de Pokémon: " + cant_poke + "\n");
+            writer.close();
+            System.out.println("Archivo generado exitosamente en " + rutaArchivo);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo.");
+            e.printStackTrace();
+        }
+    }
     
     
         
@@ -165,7 +189,7 @@ public class LobbyChar extends javax.swing.JFrame {
 
         Relacion.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         Relacion.setForeground(new java.awt.Color(255, 255, 255));
-        Relacion.setText("Relación:");
+        Relacion.setText("Watts");
         Relacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RelacionMouseClicked(evt);
@@ -237,25 +261,20 @@ public class LobbyChar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(Relacion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Relacionint)
-                                .addGap(268, 268, 268)
-                                .addComponent(Tienda))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Relacionint))
+                            .addComponent(Creditos, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(FotoRelacion)
+                                .addGap(164, 164, 164)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(Creditos))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(FotoRelacion)))
-                                .addGap(197, 197, 197)
-                                .addComponent(Charmeleon)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                                    .addComponent(Charmeleon)
+                                    .addComponent(Tienda))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(TiempoJugado)
@@ -283,18 +302,20 @@ public class LobbyChar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(FotoRelacion)
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Relacion)
+                            .addComponent(Relacionint)
+                            .addComponent(GuardarTXT))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TiempoJugado1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Charmeleon)
                         .addGap(9, 9, 9)
-                        .addComponent(AbrirCasino))
-                    .addComponent(FotoRelacion))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Relacion)
-                    .addComponent(Relacionint)
-                    .addComponent(Tienda)
-                    .addComponent(GuardarTXT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TiempoJugado1)
+                        .addComponent(AbrirCasino)
+                        .addGap(22, 22, 22)
+                        .addComponent(Tienda)))
                 .addContainerGap())
         );
 
@@ -367,10 +388,9 @@ public class LobbyChar extends javax.swing.JFrame {
 
     private void GuardarTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTXTActionPerformed
         // Guardar partida
-        Partida nueva = new Partida();
         int opcion = JOptionPane.showConfirmDialog(null, "¿Quieres guardar la partida?", "",0,1);
         if (opcion == 0) {
-        nueva.guardarjuego();
+        this.guardarjuego();
         JOptionPane.showMessageDialog(null, "Se ha guardado la partida exitosamente");
         }
         
@@ -382,8 +402,8 @@ public class LobbyChar extends javax.swing.JFrame {
 
     private void AbrirCasinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirCasinoActionPerformed
         // abrir casino
-        Casino a = new Casino();
-        a.setVisible(true);
+        adivinadorLobby h = new adivinadorLobby();
+        h.setVisible(true);
         
        
     }//GEN-LAST:event_AbrirCasinoActionPerformed

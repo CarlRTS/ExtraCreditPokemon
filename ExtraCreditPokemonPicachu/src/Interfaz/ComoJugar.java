@@ -163,10 +163,10 @@ public class ComoJugar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UsosTienda1)
-                    .addComponent(UsosTienda2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(UsosTienda2)
+                    .addComponent(UsosTienda1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
@@ -201,19 +201,19 @@ public class ComoJugar extends javax.swing.JFrame {
 
     private void UsosTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsosTiendaActionPerformed
             // Mostrar usos de tienda
-            JOptionPane.showMessageDialog(null, "adsadsdddadacbgklhcgfdkgklgdflksnlkgnsdgnsdgfosdgndsgds\n2.iwshyd9osfsoif\n3.ofedkfjvmvkfgir045jigv");
+            JOptionPane.showMessageDialog(null, "Al darle click en la tienda debes darle al botón de comprar al item que quieras\n2.Luego se muestra el precio del objeto\n3.Si tienes los watts suficientes dale a si");
     }//GEN-LAST:event_UsosTiendaActionPerformed
 
     private void UsosTienda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsosTienda1ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Al momento de entrar a LA CASA DE PACHIRISU escribe un numero del 1 al 100\n2.Cada falla te quita 1 watt\n3.Si adivinas Parisu te dará un regalo");
     }//GEN-LAST:event_UsosTienda1ActionPerformed
 
     private void UsosTienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsosTienda2ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Las emociones van en funcion de los puntos de RELACIÓN en intervalos de 2000 en 2000\n2.Empienzas en Sigh y al momento de que tengas más de 2000 se actualiza \n3.La emoción máxima que puede tener tu pokemon es INSPIRED que representa un rango de 8000 a 10000 puntos de relacion.");
     }//GEN-LAST:event_UsosTienda2ActionPerformed
 
     private void UsosTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsosTienda3ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Al momento de entrar al casino dale click al boton de pedir cartas\n2.Pikachu te preguntará cuanto quieres perder y ahí colocas la cantidad de watts que quieres apostar\n3.Te dará 2 cartas y el total de ambas\n4. Si quieres arriesgarte pide otra carta\n5. Ganas si tienes más puntos que Pikachu\n6. SI TIENES UN TOTAL QUE SUPERA LOS 21 PIERDES AUTOMATICAMENTE.");
     }//GEN-LAST:event_UsosTienda3ActionPerformed
 
     

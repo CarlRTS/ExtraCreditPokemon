@@ -292,7 +292,7 @@ public class TiendaBayas extends javax.swing.JFrame {
     private void ComprarBayaAranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarBayaAranjaActionPerformed
         try {
             // BayaAranja
-            LobbyFarfetch l = new LobbyFarfetch();
+            LobbyFarfetch1 l = new LobbyFarfetch1();
             l.musica.stop();
             LobbyChar j = new LobbyChar();
             j.musica.stop();
@@ -305,7 +305,7 @@ public class TiendaBayas extends javax.swing.JFrame {
                     if (compra == 1) {
                         if (l.watts <100) {
                             l.watts  = l.watts - 100;
-                            l.relacion = l.relacion + 100;
+                            
                         }else{
                             j.watts = j.watts - 100;
                         }

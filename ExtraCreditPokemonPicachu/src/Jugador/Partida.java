@@ -72,23 +72,7 @@ public class Partida {
         this.cant_pokemon = cant_pokemon;
     }
     
-    public void guardarjuego(){
-        String rutaArchivo = "/ExtraCreditPokemonPicachu/src/Jugador/PartidasGuardadas/PartidaNueva.txt";
-
-        try {
-            FileWriter writer = new FileWriter(rutaArchivo);
-            writer.write("Tiempo jugado: " + tiempo_jugado + "\n");
-            writer.write("Watts: " + watts + "\n");
-            writer.write("Regalos: " + regalos + "\n");
-            writer.write("Relación: " + relacion + "\n");
-            writer.write("Cantidad de Pokémon: " + cant_pokemon + "\n");
-            writer.close();
-            System.out.println("Archivo generado exitosamente en " + rutaArchivo);
-        } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo.");
-            e.printStackTrace();
-        }
-    }
+    
     
     
 }
