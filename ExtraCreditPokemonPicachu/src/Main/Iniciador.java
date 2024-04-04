@@ -5,25 +5,48 @@
 package Main;
 
 import Interfaz.Menu;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 
 /**
+ * **Clase Principal:**
+ *
+ * Esta clase es la clase principal (main) del programa.
  *
  * @author Carl
  */
 public class Iniciador {
 
     /**
-     * @param args the command line arguments
+     * Punto de entrada del programa.
+     *
+     * @param args Argumentos de la línea de comando (no utilizados).
      */
     public static void main(String[] args) throws IOException {
+        
+        File archivo = new File("C:\\Users\\Sergio\\Desktop\\Nueva carpeta\\ExtraCreditPokemon\\Datos.txt");
+        
+        FileWriter escritor = new FileWriter(archivo);
+        
+        escritor.write("jugador.txt");
+        
+        //escritor.close();
+        
+        
+        /**
+         * **Creación de un menú:**
+         *
+         * Se crea una instancia de la clase `Menu` y se hace visible.
+         */
         try {
             Menu g = new Menu();
             g.setVisible(true);
         } catch (LineUnavailableException ex) {
+             // Manejar la excepción de forma adecuada
             Logger.getLogger(Iniciador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -81,6 +81,7 @@ public class SelectorPoke extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setFont(new java.awt.Font("Sitka Small", 0, 24)); // NOI18N

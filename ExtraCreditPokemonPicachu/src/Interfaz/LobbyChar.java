@@ -172,6 +172,7 @@ public class LobbyChar extends javax.swing.JFrame {
         AbrirCasino = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
