@@ -28,11 +28,7 @@ public class Iniciador {
      */
     public static void main(String[] args) throws IOException {
         
-        File archivo = new File("C:\\Users\\Sergio\\Desktop\\Nueva carpeta\\ExtraCreditPokemon\\Datos.txt");
         
-        FileWriter escritor = new FileWriter(archivo);
-        
-        escritor.write("jugador.txt");
         
         //escritor.close();
         

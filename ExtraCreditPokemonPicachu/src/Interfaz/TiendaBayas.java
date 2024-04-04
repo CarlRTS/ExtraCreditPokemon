@@ -54,8 +54,6 @@ public class TiendaBayas extends javax.swing.JFrame {
         ComprarEnigma = new javax.swing.JButton();
         ComprarEnigma1 = new javax.swing.JButton();
         ComprarZidra = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,10 +102,25 @@ public class TiendaBayas extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tienda/Pokeball.png"))); // NOI18N
 
         ComprarBayaCaquic.setText("Comprar");
+        ComprarBayaCaquic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarBayaCaquicActionPerformed(evt);
+            }
+        });
 
         ComprarBayaZanama.setText("Comprar");
+        ComprarBayaZanama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarBayaZanamaActionPerformed(evt);
+            }
+        });
 
         ComprarPokeBall.setText("Comprar");
+        ComprarPokeBall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarPokeBallActionPerformed(evt);
+            }
+        });
 
         ComprarPokeBall1.setText("Cerrar tienda");
         ComprarPokeBall1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,20 +130,39 @@ public class TiendaBayas extends javax.swing.JFrame {
         });
 
         ComprarZreza.setText("Comprar");
+        ComprarZreza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarZrezaActionPerformed(evt);
+            }
+        });
 
         ComprarZiuela.setText("Comprar");
+        ComprarZiuela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarZiuelaActionPerformed(evt);
+            }
+        });
 
         ComprarEnigma.setText("Comprar");
+        ComprarEnigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarEnigmaActionPerformed(evt);
+            }
+        });
 
         ComprarEnigma1.setText("Comprar");
+        ComprarEnigma1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarEnigma1ActionPerformed(evt);
+            }
+        });
 
         ComprarZidra.setText("Comprar");
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel12.setText("Watts :");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel13.setText("0");
+        ComprarZidra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarZidraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,16 +208,8 @@ public class TiendaBayas extends javax.swing.JFrame {
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(39, 39, 39)
-                                                .addComponent(jLabel12))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(62, 62, 62)
-                                                .addComponent(jLabel13))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(19, 19, 19)
                                         .addComponent(ComprarBayaZanama)
@@ -240,33 +264,25 @@ public class TiendaBayas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ComprarBayaAranja)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ComprarPokeBall)
+                        .addGap(279, 279, 279))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ComprarPokeBall)
-                                .addGap(279, 279, 279))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel8)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ComprarZiuela)
-                                    .addComponent(ComprarEnigma)
-                                    .addComponent(ComprarEnigma1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComprarZiuela)
+                            .addComponent(ComprarEnigma)
+                            .addComponent(ComprarEnigma1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel1))
         );
@@ -287,6 +303,7 @@ public class TiendaBayas extends javax.swing.JFrame {
 
     private void ComprarPokeBall1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarPokeBall1ActionPerformed
         // Cierra tienda:
+        
         this.dispose();
     }//GEN-LAST:event_ComprarPokeBall1ActionPerformed
 
@@ -297,13 +314,15 @@ public class TiendaBayas extends javax.swing.JFrame {
             l.musica.stop();
             LobbyChar j = new LobbyChar();
             j.musica.stop();
-            int opcion = JOptionPane.showConfirmDialog(null, "La Baya Aranja tiene un precio de 100 watts", "",0,0);
-            if (opcion == 1) {
+            int opcion = JOptionPane.showConfirmDialog(null, "Aceptar o Cancelar",
+                "OK_CANCEL_OPTION", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+            if (opcion == JOptionPane.OK_CANCEL_OPTION) {
                 if ((l.watts <100)||(j.watts<100)) {
                     JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
                 }else{
-                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "",0,1);
-                    if (compra == 1) {
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "",0,0);
+                    if (compra == 0) {
                         if (l.watts <100) {
                             l.watts  = l.watts - 100;
                             
@@ -319,6 +338,240 @@ public class TiendaBayas extends javax.swing.JFrame {
             Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ComprarBayaAranjaActionPerformed
+
+    private void ComprarBayaCaquicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarBayaCaquicActionPerformed
+        try {
+            // BayaAranja
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarBayaCaquicActionPerformed
+
+    private void ComprarBayaZanamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarBayaZanamaActionPerformed
+        
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarBayaZanamaActionPerformed
+
+    private void ComprarZrezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarZrezaActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarZrezaActionPerformed
+
+    private void ComprarZidraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarZidraActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarZidraActionPerformed
+
+    private void ComprarPokeBallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarPokeBallActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarPokeBallActionPerformed
+
+    private void ComprarZiuelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarZiuelaActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarZiuelaActionPerformed
+
+    private void ComprarEnigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEnigmaActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarEnigmaActionPerformed
+
+    private void ComprarEnigma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEnigma1ActionPerformed
+        try {
+            LobbyFarfetch1 l = new LobbyFarfetch1();
+            l.musica.stop();
+            LobbyChar j = new LobbyChar();
+            j.musica.stop();
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta baya vale 200 watts", "", 1);
+            if (opcion == 1) {
+                if ((l.watts <200)||(j.watts<200)) {
+                    JOptionPane.showMessageDialog(null, "No tienes watts suficientes para comprar este objeto");
+                }else{
+                    int compra = JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres comprar esta baya?", "rer",1,0,null);
+                    if (compra == 1) {
+                        if (l.watts <200) {
+                            l.watts  = l.watts - 200;
+                            
+                        }else{
+                            j.watts = j.watts - 100;
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(TiendaBayas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComprarEnigma1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,8 +592,6 @@ public class TiendaBayas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

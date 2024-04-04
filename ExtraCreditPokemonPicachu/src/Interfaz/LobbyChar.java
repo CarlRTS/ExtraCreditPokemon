@@ -248,7 +248,7 @@ public class LobbyChar extends javax.swing.JFrame {
             }
         });
 
-        AbrirCasino.setText("Jugar Cartas");
+        AbrirCasino.setText("Jugar con Pachirisu");
         AbrirCasino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AbrirCasinoActionPerformed(evt);
@@ -281,11 +281,12 @@ public class LobbyChar extends javax.swing.JFrame {
                                 .addComponent(TiempoJugado)
                                 .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(etiquetaTiempo)
-                                    .addComponent(GuardarTXT)
-                                    .addComponent(AbrirCasino))
-                                .addGap(42, 42, 42))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AbrirCasino)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(etiquetaTiempo)
+                                        .addComponent(GuardarTXT)))
+                                .addGap(22, 22, 22))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(TiempoJugado1)))
@@ -303,8 +304,13 @@ public class LobbyChar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(FotoRelacion)
-                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(FotoRelacion)
+                                .addGap(44, 44, 44))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(AbrirCasino)
+                                .addGap(79, 79, 79)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Relacion)
                             .addComponent(Relacionint)
@@ -313,9 +319,7 @@ public class LobbyChar extends javax.swing.JFrame {
                         .addComponent(TiempoJugado1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Charmeleon)
-                        .addGap(9, 9, 9)
-                        .addComponent(AbrirCasino)
-                        .addGap(22, 22, 22)
+                        .addGap(54, 54, 54)
                         .addComponent(Tienda)))
                 .addContainerGap())
         );

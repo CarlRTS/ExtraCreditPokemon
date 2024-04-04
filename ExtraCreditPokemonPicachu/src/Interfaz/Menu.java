@@ -223,13 +223,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_JugarActionPerformed
 
     private void ComoJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComoJugarActionPerformed
-        ComoJugar com = new ComoJugar();
-        com.setVisible(true);
-        this.dispose();
-        if (clip.isRunning()) {
+        try {
+            ComoJugar com = new ComoJugar();
+            com.setVisible(true);
+            this.dispose();
+            if (clip.isRunning()) {
                 
                 clip.close();
             }
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ComoJugarActionPerformed
 
     private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed

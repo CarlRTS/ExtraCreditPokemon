@@ -1,5 +1,5 @@
-Tiempo jugado: 00:00:35:95
-Watts: 35
+Tiempo jugado: 00:00:03:97
+Watts: 3
 Regalos: 0
-Relación: Cantidad de watts 35
+Relación: Cantidad de watts 3
 Cantidad de Pokémon: 1

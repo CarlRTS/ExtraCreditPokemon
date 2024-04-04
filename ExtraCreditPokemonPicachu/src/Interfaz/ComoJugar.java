@@ -7,7 +7,11 @@ package Interfaz;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,12 +19,35 @@ import javax.swing.JOptionPane;
  * @author Carl
  */
 public class ComoJugar extends javax.swing.JFrame {
-
+Clip play;
     /**
      * Creates new form Creditos
      */
-    public ComoJugar() {
+    public ComoJugar() throws LineUnavailableException, IOException {
         initComponents();
+        
+        
+        try {
+            // Load your sound file (replace "your-sound-file.wav" with the actual file path)
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    Menu.class.getResourceAsStream("/MusicaMenu/MusicaSelector.wav"));
+            // Get a Clip
+            play = AudioSystem.getClip();
+
+            // Open the audio stream
+            play.open(audioInputStream);
+
+            // Start playing the clip
+            play.start();
+            play.loop(100);
+            
+            
+                 
+            
+    }   catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
     }
 
     /**
@@ -188,11 +215,14 @@ public class ComoJugar extends javax.swing.JFrame {
 
     private void CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditosActionPerformed
         // Ir al menú
+        
         try {
             // Ir al menu
             Menu j = new Menu();
             j.setVisible(true);
             this.dispose();
+            this.play.stop();
+            
         } catch (IOException ex) {
             Logger.getLogger(LobbyChar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (LineUnavailableException ex) {
